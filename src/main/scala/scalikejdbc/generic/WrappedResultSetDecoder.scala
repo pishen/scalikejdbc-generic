@@ -3,9 +3,6 @@ package scalikejdbc.generic
 import scalikejdbc._
 import shapeless._
 import shapeless.labelled._
-import shapeless.syntax.singleton._
-import shapeless.ops.hlist.Length
-import shapeless.ops.nat.ToInt
 
 trait WrappedResultSetDecoder[A] {
   def decode(rs: WrappedResultSet): A
