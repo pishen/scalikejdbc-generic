@@ -10,12 +10,12 @@ trait WrappedResultSetDecoder[A] {
 
 object WrappedResultSetDecoder {
   def apply[A](implicit decoder: WrappedResultSetDecoder[A]) = decoder
-  
+
   def createDecoder[A](f: WrappedResultSet => A) = new WrappedResultSetDecoder[A] {
     def decode(rs: WrappedResultSet) = f(rs)
   }
 
-  implicit def singleDecoder[A : TypeBinder]: WrappedResultSetDecoder[A] = createDecoder {
+  implicit def singleDecoder[A: TypeBinder]: WrappedResultSetDecoder[A] = createDecoder {
     rs => rs.get[A](1)
   }
 
@@ -23,7 +23,7 @@ object WrappedResultSetDecoder {
     rs => HNil
   }
 
-  implicit def hlistDecoder[K <: Symbol, H : TypeBinder, T <: HList](
+  implicit def hlistDecoder[K <: Symbol, H: TypeBinder, T <: HList](
     implicit
     witness: Witness.Aux[K],
     tDecoder: WrappedResultSetDecoder[T]
