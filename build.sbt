@@ -1,8 +1,10 @@
 name := "scalikejdbc-generic"
 
-version := "0.1.0-SNAPSHOT"
+version := "0.1.0"
 
 scalaVersion := "2.11.11"
+
+crossScalaVersions := Seq("2.11.11", "2.12.2")
 
 libraryDependencies ++= Seq(
   "com.chuusai" %% "shapeless" % "2.3.2",
@@ -12,4 +14,5 @@ libraryDependencies ++= Seq(
 )
 
 organization := "net.pishen"
+
 licenses += ("Apache-2.0" -> url("https://www.apache.org/licenses/LICENSE-2.0.html"))
